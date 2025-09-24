@@ -14,6 +14,12 @@ abstract class AppRouter {
           return const HomeView();
         },
       ),
+      GoRoute(
+        path: KdetailsScreen,
+        builder: (BuildContext context, GoRouterState state) {
+          return const CustomDetailsScreen();
+        },
+      ),
     ],
   );
 }

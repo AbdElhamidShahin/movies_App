@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'CustomListVeiwItem.dart';
 
-class ListVeiwPopular extends StatelessWidget {
-  const ListVeiwPopular({super.key});
+class CustomTopRatingListView extends StatelessWidget {
+  const CustomTopRatingListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +11,8 @@ class ListVeiwPopular extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .37,
 
       child: ListView.builder(
-        padding: EdgeInsets.zero,
         itemCount: 5,
+        padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(

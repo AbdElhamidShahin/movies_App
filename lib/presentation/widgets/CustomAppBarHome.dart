@@ -9,7 +9,7 @@ class CustomAppBarHome extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text("Popular", style: Styles.textStyle24),
+        Text("Movies", style: Styles.textStyle24),
         IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 32)),
       ],
     );
