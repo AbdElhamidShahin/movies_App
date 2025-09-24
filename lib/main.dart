@@ -7,6 +7,7 @@ import 'package:movies_app/presentation/Cubits/MoviesTopRetingCubit/MoviesTopRat
 
 import 'core/constants/AppColors.dart';
 import 'core/utils/AppRouter.dart';
+import 'data/repositories/homeRepo.dart';
 
 void main() {
   setupSeviceLocator(); // مهم جداً
@@ -24,12 +25,12 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              MoviesPopularCubit(getIt.get<HomeIepoImple>())
+              MoviesPopularCubit(getIt.get<HomeRepo>())
                 ..fetchPopularMovies(),
         ),
         BlocProvider(
           create: (context) =>
-          MoviesTopRatingCubit(getIt.get<HomeIepoImple>())
+          MoviesTopRatingCubit(getIt.get<HomeRepo>())
             ..fetchTopRatingMovies(),
         ),
       ],

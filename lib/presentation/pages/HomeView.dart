@@ -12,26 +12,33 @@ class HomeView extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
+          /// AppBar
           SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: CustomAppBarHome(),
-                ),
-                SizedBox(height: 16),
-                ListVeiwPopular(),
-                SizedBox(height: 8),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text("Popular", style: Styles.textStyle24),
-                ),
-                SizedBox(height: 24),
-                CustomTopRatingListView(),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CustomAppBarHome(),
             ),
           ),
+
+          SliverToBoxAdapter(child: SizedBox(height: 16)),
+
+          /// Popular horizontal list
+          SliverToBoxAdapter(child: ListVeiwPopular()),
+
+          SliverToBoxAdapter(child: SizedBox(height: 8)),
+
+          /// "Popular" text
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Text("Popular", style: Styles.textStyle24),
+            ),
+          ),
+
+          SliverToBoxAdapter(child: SizedBox(height: 24)),
+
+          /// Top rating list
+          SliverToBoxAdapter(child: CustomTopRatingListView()),
         ],
       ),
     );

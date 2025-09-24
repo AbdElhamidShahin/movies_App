@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_app/presentation/Cubits/MoviesTopRetingCubit/MoviesTopRatingCubit.dart';
 import 'package:movies_app/presentation/Cubits/MoviesTopRetingCubit/MoviesTopRatingState.dart';
 import 'package:movies_app/presentation/widgets/CustomErrorWidget.dart';
 import 'package:movies_app/presentation/widgets/CustomLoadingWidget.dart';
 
+import '../../core/constants/Strings.dart';
 import 'CustomListVeiwItem.dart';
 
 class CustomTopRatingListView extends StatelessWidget {
@@ -19,13 +21,19 @@ class CustomTopRatingListView extends StatelessWidget {
         builder: (BuildContext context, state) {
           if (state is MoviesTopRatingSuccess) {
             return ListView.builder(
-              itemCount: 5,
+              itemCount: state.movies.length,
               padding: EdgeInsets.zero,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(right: 20),
-                  child: CustomListVeiwItem(moviesModel: state.movies[index]),
+                  child: GestureDetector(
+                    onTap: (){
+                      context.go(KdetailsScreen, extra: state.movies[index]);
+
+                    },
+                    child: CustomListVeiwItem(moviesModel: state.movies[index]),
+                  ),
                 );
               },
             );

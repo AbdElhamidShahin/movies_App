@@ -11,6 +11,7 @@ void setupSeviceLocator() {
   getIt.registerSingleton<ApiServise>(ApiServise(Dio()));
 
   getIt.registerSingleton<HomeRepo>(
-    HomeIepoImple(apiServise: getIt.get<ApiServise>()),
+    HomeRepoImple(apiServise: getIt.get<ApiServise>()),
   );
+
 }

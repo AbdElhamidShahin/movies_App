@@ -5,10 +5,10 @@ import 'package:movies_app/core/utils/ApiServise.dart';
 import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
 import 'package:movies_app/data/repositories/homeRepo.dart';
 
-class HomeIepoImple implements HomeRepo {
+class HomeRepoImple implements HomeRepo {
   final ApiServise apiServise;
 
-  HomeIepoImple({required this.apiServise});
+  HomeRepoImple({required this.apiServise});
   @override
   Future<Either<Falier, List<MoviesModel>>> fetchPopularMovies() async {
     try {
@@ -16,7 +16,9 @@ class HomeIepoImple implements HomeRepo {
         endPoint: "movie/popular?api_key=c57118edc255f981fb498e3a6e899a20",
       );
       List<MoviesModel> movies = [];
-
+      for (var item in data["results"]) {
+        movies.add(MoviesModel.fromJson(item));
+      }
       return Right(movies);
     } catch (e) {
       if (e is DioError) {
@@ -34,7 +36,9 @@ class HomeIepoImple implements HomeRepo {
         endPoint: "movie/top_rated?api_key=c57118edc255f981fb498e3a6e899a20",
       );
       List<MoviesModel> movies = [];
-
+      for (var item in data["results"]) {
+        movies.add(MoviesModel.fromJson(item));
+      }
       return Right(movies);
     } catch (e) {
       if (e is DioError) {
