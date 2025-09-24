@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../presentation/pages/HomeView.dart' ;
+import '../../presentation/pages/HomeView.dart';
+import '../../presentation/pages/SearchScrren.dart';
 import '../../presentation/widgets/CustomDetailsScreen.dart';
 import '../constants/Strings.dart';
 
@@ -19,6 +20,12 @@ abstract class AppRouter {
         path: KdetailsScreen,
         builder: (BuildContext context, GoRouterState state) {
           return const CustomDetailsScreen();
+        },
+      ),
+      GoRoute(
+        path: KsearchView,
+        builder: (BuildContext context, GoRouterState state) {
+          return const SearchView();
         },
       ),
     ],
