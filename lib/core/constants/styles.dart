@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../constants/Strings.dart';
-
 abstract class Styles {
   static const textStyle18 = TextStyle(
     fontSize: 18,
@@ -15,7 +13,8 @@ abstract class Styles {
     fontWeight: FontWeight.normal,
     color: Colors.white,
     decoration: TextDecoration.none,
-  );  static const textStyle24 = TextStyle(
+  );
+  static const textStyle24 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.w800,
     color: Colors.white,

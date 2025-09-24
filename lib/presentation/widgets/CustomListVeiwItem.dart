@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/constants/styles.dart';
+import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
 
 import '../../core/constants/Strings.dart';
 
 class CustomListVeiwItem extends StatelessWidget {
-  CustomListVeiwItem({super.key});
+  CustomListVeiwItem({super.key, required this.moviesModel});
+  final MoviesModel moviesModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,7 +22,10 @@ class CustomListVeiwItem extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
               child: AspectRatio(
                 aspectRatio: 2.7 / 4,
-                child: Image.asset("assets/images/test.jpeg", fit: BoxFit.fill),
+                child: Image.network(
+                  moviesModel.results!.posterPath ?? '',
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
 
