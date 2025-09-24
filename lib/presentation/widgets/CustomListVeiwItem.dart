@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/constants/styles.dart';
+
+import '../../core/constants/Strings.dart';
 
 class CustomListVeiwItem extends StatelessWidget {
   CustomListVeiwItem({super.key});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){},
+      onTap: () {
+        context.go(KdetailsScreen);
+      },
       child: SizedBox(
         width: 180,
         child: Column(

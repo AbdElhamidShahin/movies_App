@@ -17,7 +17,7 @@ abstract class Styles {
     decoration: TextDecoration.none,
   );  static const textStyle24 = TextStyle(
     fontSize: 24,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w800,
     color: Colors.white,
     decoration: TextDecoration.none,
   );
