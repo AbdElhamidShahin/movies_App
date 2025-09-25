@@ -1,12 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movies_app/core/constants/styles.dart';
+import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
+import 'package:movies_app/presentation/Cubits/CaracterCubit/CaracterCubit.dart';
 
 import 'CustomListVeiwCaracter.dart';
 import 'CustomTextButtonDetails.dart';
 
-class CustomDetailsScreen extends StatelessWidget {
-  const CustomDetailsScreen({super.key});
+class CustomDetailsScreen extends StatefulWidget {
+  const CustomDetailsScreen({super.key, required this.moviesModel});
+  final MoviesModel moviesModel;
+
+  @override
+  State<CustomDetailsScreen> createState() => _CustomDetailsScreenState();
+}
+
+class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
+  @override
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<CaracterCubit>(context)
+          .fetchCaracterMovies(widget.moviesModel.id!);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,28 +44,34 @@ class CustomDetailsScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 child: AspectRatio(
                   aspectRatio: 3.5 / 4,
-                  child: Image.asset(
-                    "assets/images/test.jpeg",
+                  child: Image.network(
+                    "https://image.tmdb.org/t/p/w500${widget.moviesModel.posterPath}",
                     fit: BoxFit.fill,
                   ),
                 ),
               ),
               SizedBox(height: 24),
 
-              Text("The Dark Kinight", style: Styles.textStyle24),
+              Text("${widget.moviesModel.title}", style: Styles.textStyle24),
               SizedBox(height: 24),
               Row(
                 children: [
                   Opacity(
                     opacity: .7,
 
-                    child: Text("2009", style: Styles.textStyle20),
+                    child: Text(
+                      "${widget.moviesModel.releaseDate!.substring(0, 4)}",
+                      style: Styles.textStyle20,
+                    ),
                   ),
                   Spacer(),
                   Opacity(
                     opacity: .7,
 
-                    child: Text("5.0", style: Styles.textStyle20),
+                    child: Text(
+                      "${widget.moviesModel.voteAverage!.toStringAsFixed(1)}",
+                      style: Styles.textStyle20,
+                    ),
                   ),
                   SizedBox(width: 6),
                   Icon(
@@ -61,7 +87,8 @@ class CustomDetailsScreen extends StatelessWidget {
               SizedBox(height: 24),
 
               Text(
-                "The Demon Slayer Corps are drawn into the Infinity Castle, where Tanjiro, Nezuko, and the Hashira face terrifying Upper Rank demons in a desperate fight as the final battle against Muzan Kibutsuji begins.",
+                "${widget.moviesModel.overview}",
+
                 style: Styles.textStyle16.copyWith(
                   color: Colors.white70,
                   fontWeight: FontWeight.w600,

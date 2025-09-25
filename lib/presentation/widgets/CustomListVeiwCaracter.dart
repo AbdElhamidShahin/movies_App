@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/presentation/Cubits/CaracterCubit/CaracterCubit.dart';
+import 'package:movies_app/presentation/Cubits/CaracterCubit/CaracterState.dart';
+import 'package:movies_app/presentation/widgets/CustomErrorWidget.dart';
+import 'package:movies_app/presentation/widgets/CustomLoadingWidget.dart';
 
 import 'CustomItemCaracter.dart';
 
@@ -10,15 +15,31 @@ class CustomListVeiwCaracter extends StatelessWidget {
     return SizedBox(
       height: MediaQuery.of(context).size.height * .25,
 
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        itemCount: 5,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: CustomItemCaracter(),
-          );
+      child: BlocBuilder<CaracterCubit, CaracterState>(
+        builder: (BuildContext context, state) {
+          if (state is CaracterStateSuccess) {
+            return ListView.builder(
+              padding: EdgeInsets.zero,
+              itemCount: state.cast.length,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) {
+                final actor = state.cast[index]; // ✅ حلينا المشكلة
+
+                return Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: CustomItemCaracter(
+                    imageUrl: actor.profilePath != null
+                        ? "https://image.tmdb.org/t/p/w500${actor.profilePath}"
+                        : "assets/images/placeholder.png", title: "${actor.name}",
+                  ),
+                );
+              },
+            );
+          } else if (state is CaracterStateFalier) {
+            return CustomErrorWidget(errorMessage: state.errorMessage);
+          } else {
+            return CustomLoadingWidget();
+          }
         },
       ),
     );

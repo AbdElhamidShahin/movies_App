@@ -31,7 +31,7 @@ class CustomListVeiwItem extends StatelessWidget {
           ),
           SizedBox(height: 8),
           Text(
-            "${moviesModel.releaseDate}",
+            "${moviesModel.releaseDate!.substring(0,4)}",
             style: Styles.textStyle16.copyWith(color: Colors.white70),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,

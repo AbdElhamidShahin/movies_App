@@ -28,9 +28,8 @@ class ListVeiwPopular extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 20),
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       context.go(KdetailsScreen, extra: state.movies[index]);
-
                     },
                     child: CustomListVeiwItem(moviesModel: state.movies[index]),
                   ),

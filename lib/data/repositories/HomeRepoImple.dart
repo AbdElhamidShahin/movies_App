@@ -5,10 +5,12 @@ import 'package:movies_app/core/utils/ApiServise.dart';
 import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
 import 'package:movies_app/data/repositories/homeRepo.dart';
 
+import '../models/moviesModel/CastModel.dart';
+
 class HomeRepoImple implements HomeRepo {
   final ApiServise apiServise;
 
-  HomeRepoImple({required this.apiServise});
+  HomeRepoImple( { required this.apiServise});
   @override
   Future<Either<Falier, List<MoviesModel>>> fetchPopularMovies() async {
     try {
@@ -48,4 +50,26 @@ class HomeRepoImple implements HomeRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Falier, List<CastModel>>> fetchCaracterMovies(int movieId) async {
+    try {
+      var data = await apiServise.featchCatogaryData(
+        endPoint: "movie/$movieId/credits?api_key=c57118edc255f981fb498e3a6e899a20",
+      );
+
+      List<CastModel> cast = [];
+      for (var item in data["cast"]) {
+        cast.add(CastModel.fromJson(item));
+      }
+      return Right(cast);
+    } catch (e) {
+      if (e is DioError) {
+        return Left(ServerFailure.fromDioError(e));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
 }

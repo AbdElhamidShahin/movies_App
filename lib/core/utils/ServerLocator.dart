@@ -9,9 +9,7 @@ final getIt = GetIt.instance;
 
 void setupSeviceLocator() {
   getIt.registerSingleton<ApiServise>(ApiServise(Dio()));
-
   getIt.registerSingleton<HomeRepo>(
-    HomeRepoImple(apiServise: getIt.get<ApiServise>()),
+      HomeRepoImple(  apiServise:  getIt.get<ApiServise>(),),
   );
-
 }
