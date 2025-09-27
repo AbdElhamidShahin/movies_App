@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/core/constants/styles.dart';
 
 class CustomItemCaracter extends StatelessWidget {
-  const CustomItemCaracter({super.key, required this.imageUrl, required this.title});
-final String imageUrl;
-final String title;
+  const CustomItemCaracter({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+  });
+  final String imageUrl;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,9 +24,9 @@ final String title;
             ),
           ),
 
-          SizedBox(height: 8,),
+          SizedBox(height: 8),
 
-          Text(title, style: Styles.textStyle18,textAlign: TextAlign.center,),
+          Text(title, style: Styles.textStyle18, textAlign: TextAlign.center),
         ],
       ),
     );

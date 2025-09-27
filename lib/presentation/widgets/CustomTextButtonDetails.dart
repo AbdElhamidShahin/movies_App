@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/constants/styles.dart';
 
 class CustomTextButtonDetails extends StatelessWidget {
-   CustomTextButtonDetails({super.key, this.onPressed});
+  const CustomTextButtonDetails({super.key, this.onPressed});
    final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {

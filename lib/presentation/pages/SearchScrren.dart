@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_app/presentation/Cubits/MociesSearchCubit/MoviesSearchCubit.dart';
 
+import '../../core/constants/AppColors.dart';
+import '../../core/constants/Strings.dart';
 import '../widgets/CustomSearchListVeiw.dart';
 import '../widgets/CustomTextFeild.dart' show CustomTextFeild;
 
@@ -23,6 +26,7 @@ class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -45,6 +49,7 @@ class _SearchViewState extends State<SearchView> {
                 child: CustomSearchListVeiw(),
               ),
             ),
+
           ],
         ),
       ),

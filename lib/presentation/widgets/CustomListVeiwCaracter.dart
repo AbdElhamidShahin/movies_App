@@ -23,7 +23,7 @@ class CustomListVeiwCaracter extends StatelessWidget {
               itemCount: state.cast.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
-                final actor = state.cast[index]; // ✅ حلينا المشكلة
+                final actor = state.cast[index];
 
                 return Padding(
                   padding: const EdgeInsets.only(right: 20),

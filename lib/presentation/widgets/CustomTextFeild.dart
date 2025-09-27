@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movies_app/core/constants/styles.dart';
+
+import '../../core/constants/Strings.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final void Function(String) onPressed;
@@ -21,6 +24,12 @@ class CustomTextFeild extends StatelessWidget {
             enabledBorder: buildOutlineInputBorder(),
             focusedBorder: buildOutlineInputBorder(),
             hintText: 'Search movies and shows',
+            suffixIcon:     IconButton(
+              onPressed: () {
+                context.go(KhomeVeiw);
+              },
+              icon: Icon(Icons.arrow_forward,size:28 ,),
+            ),
             hintStyle: Styles.textStyle18.copyWith(
               fontWeight: FontWeight.w400,
               color: Colors.white70,

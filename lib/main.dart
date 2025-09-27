@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/ServerLocator.dart';
 import 'package:movies_app/presentation/Cubits/MoviesPopularCubit/MoviesPopularCubit.dart';
 import 'package:movies_app/presentation/Cubits/MoviesTopRetingCubit/MoviesTopRatingCubit.dart';
-
 import 'core/constants/AppColors.dart';
 import 'core/utils/AppRouter.dart';
 import 'data/repositories/homeRepo.dart';

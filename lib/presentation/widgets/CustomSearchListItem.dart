@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
-
-import '../../core/constants/Strings.dart';
 import '../../core/constants/styles.dart';
 
 class CustomSearchListItem extends StatelessWidget {
@@ -58,7 +55,7 @@ class CustomSearchListItem extends StatelessWidget {
                         child: Text(
                           (moviesModel.releaseDate != null && moviesModel.releaseDate!.length >= 4)
                               ? moviesModel.releaseDate!.substring(0, 4)
-                              : "N/A", // لو مفيش داتا
+                              : "N/A",
                           style: Styles.textStyle20.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,
