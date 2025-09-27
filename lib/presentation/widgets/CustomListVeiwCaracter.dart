@@ -30,7 +30,8 @@ class CustomListVeiwCaracter extends StatelessWidget {
                   child: CustomItemCaracter(
                     imageUrl: actor.profilePath != null
                         ? "https://image.tmdb.org/t/p/w500${actor.profilePath}"
-                        : "assets/images/placeholder.png", title: "${actor.name}",
+                        : "https://tse2.mm.bing.net/th/id/OIP.9XQh1_or4tR3L8RK5AdKdQHaLG?rs=1&pid=ImgDetMain&o=7&rm=3",
+                    title: "${actor.name}",
                   ),
                 );
               },

@@ -10,7 +10,7 @@ import '../models/moviesModel/CastModel.dart';
 class HomeRepoImple implements HomeRepo {
   final ApiServise apiServise;
 
-  HomeRepoImple( { required this.apiServise});
+  HomeRepoImple({required this.apiServise});
   @override
   Future<Either<Falier, List<MoviesModel>>> fetchPopularMovies() async {
     try {
@@ -52,10 +52,13 @@ class HomeRepoImple implements HomeRepo {
   }
 
   @override
-  Future<Either<Falier, List<CastModel>>> fetchCaracterMovies(int movieId) async {
+  Future<Either<Falier, List<CastModel>>> fetchCaracterMovies(
+    int movieId,
+  ) async {
     try {
       var data = await apiServise.featchCatogaryData(
-        endPoint: "movie/$movieId/credits?api_key=c57118edc255f981fb498e3a6e899a20",
+        endPoint:
+            "movie/$movieId/credits?api_key=c57118edc255f981fb498e3a6e899a20",
       );
 
       List<CastModel> cast = [];
@@ -72,4 +75,28 @@ class HomeRepoImple implements HomeRepo {
     }
   }
 
+  @override
+  Future<Either<Falier, List<MoviesModel>>> fetchSearchMovies({
+    required String query,
+  })
+  async {
+    try {
+      var data = await apiServise.featchCatogaryData(
+        endPoint:
+            "search/movie?api_key=c57118edc255f981fb498e3a6e899a20&query=${Uri.encodeComponent(query)}",
+      );
+
+      List<MoviesModel> movies = [];
+      for (var item in data["results"]) {
+        movies.add(MoviesModel.fromJson(item));
+      }
+      return Right(movies);
+    } catch (e) {
+      if (e is DioError) {
+        return Left(ServerFailure.fromDioError(e));
+      } else {
+        return Left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

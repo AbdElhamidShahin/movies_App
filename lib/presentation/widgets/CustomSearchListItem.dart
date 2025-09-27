@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
 
+import '../../core/constants/Strings.dart';
 import '../../core/constants/styles.dart';
 
 class CustomSearchListItem extends StatelessWidget {
-  const CustomSearchListItem({super.key});
-
+  const CustomSearchListItem({super.key, required this.moviesModel});
+  final MoviesModel moviesModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,7 +23,9 @@ class CustomSearchListItem extends StatelessWidget {
                   color: Colors.red,
                   borderRadius: BorderRadius.circular(8),
                   image: DecorationImage(
-                    image: AssetImage("assets/images/test.jpeg"),
+                    image: NetworkImage(
+                      "https://image.tmdb.org/t/p/w500${moviesModel.posterPath}",
+                    ),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -35,7 +40,7 @@ class CustomSearchListItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child: Text(
-                      "Inception",
+                      "${moviesModel.title}",
                       style: Styles.textStyle24.copyWith(
                         fontWeight: FontWeight.w400,
                       ),
@@ -51,7 +56,9 @@ class CustomSearchListItem extends StatelessWidget {
                       Opacity(
                         opacity: .6,
                         child: Text(
-                          "1994",
+                          (moviesModel.releaseDate != null && moviesModel.releaseDate!.length >= 4)
+                              ? moviesModel.releaseDate!.substring(0, 4)
+                              : "N/A", // لو مفيش داتا
                           style: Styles.textStyle20.copyWith(
                             fontWeight: FontWeight.w500,
                             fontSize: 20,

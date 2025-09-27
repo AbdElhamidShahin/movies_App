@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movies_app/data/models/moviesModel/moviesModel.dart';
 import 'package:movies_app/data/repositories/HomeRepoImple.dart';
 import 'package:movies_app/presentation/Cubits/CaracterCubit/CaracterCubit.dart';
+import 'package:movies_app/presentation/Cubits/MociesSearchCubit/MoviesSearchCubit.dart';
 
 import '../../data/repositories/homeRepo.dart';
 import '../../presentation/pages/HomeView.dart';
@@ -36,7 +37,10 @@ abstract class AppRouter {
       GoRoute(
         path: KsearchView,
         builder: (BuildContext context, GoRouterState state) {
-          return const SearchView();
+          return BlocProvider(
+            create: (context) => MoviesSearchCubit(getIt.get<HomeRepo>()),
+            child: const SearchView(),
+          );
         },
       ),
     ],

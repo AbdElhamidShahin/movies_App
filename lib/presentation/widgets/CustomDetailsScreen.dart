@@ -22,11 +22,11 @@ class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<CaracterCubit>(context)
-          .fetchCaracterMovies(widget.moviesModel.id!);
+      BlocProvider.of<CaracterCubit>(
+        context,
+      ).fetchCaracterMovies(widget.moviesModel.id!);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class _CustomDetailsScreenState extends State<CustomDetailsScreen> {
               ),
               SizedBox(height: 24),
 
-              CustomTextButtonDetails(),
+              CustomTextButtonDetails(onPressed: () {}),
               SizedBox(height: 24),
 
               Text(

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../../core/constants/styles.dart';
 
 class CustomTextButtonDetails extends StatelessWidget {
-  const CustomTextButtonDetails({super.key});
-
+   CustomTextButtonDetails({super.key, this.onPressed});
+   final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return  TextButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
