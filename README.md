@@ -1,4 +1,5 @@
 # 🎬 Movies App  
+
 ## 📱 Screenshots  
 
 <img src="https://github.com/user-attachments/assets/61a5368a-eab3-4fb9-a231-71632c5d445f" width="250" />
@@ -9,10 +10,7 @@
 
 <img src="https://github.com/user-attachments/assets/09cf352e-14f3-403e-a33b-3662acfa3a61" width="250" />
 
-
 ---
-
-##
 ---
 
 - **Flutter**  
