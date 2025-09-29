@@ -1,16 +1,28 @@
-# movies_app
+# 🎬 Movies App  
 
-A new Flutter project.
+## 📱 Screenshots
 
-## Getting Started
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/61a5368a-eab3-4fb9-a231-71632c5d445f" width="200" />
+  <img src="https://github.com/user-attachments/assets/a61eb91d-6faa-42de-9e31-5ead784f353a" width="200" />
+  <img src="https://github.com/user-attachments/assets/2ecc0164-1e0b-4a52-b427-dd6c3b0dff4e" width="200" />
+  <img src="https://github.com/user-attachments/assets/09cf352e-14f3-403e-a33b-3662acfa3a61" width="200" />
+</p>
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+##
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**  
+- **Dart**  
+- **API Integration** لعرض بيانات الأفلام  
+- **State Management (BLoC / Cubit)**  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+```bash
+git clone https://github.com/username/movies_app.git
+cd movies_app
+flutter pub get
+flutter run
